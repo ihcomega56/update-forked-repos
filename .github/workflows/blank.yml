@@ -20,7 +20,7 @@ jobs:
           token: ${{secrets.gh_token}}
       - name: Update repos
         run: |
-          git remote add pyrsia https://github.com/ihcomega56/pyrsia.git
+          git remote add pyrsia https://github.com/pyrsia/pyrsia.git
           git fetch pyrsia
           git merge pyrsia/main
           git push origin main
