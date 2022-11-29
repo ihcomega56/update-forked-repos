@@ -5,7 +5,7 @@ name: Update forked repos
 # Controls when the workflow will run
 on:
   schedule:
-    - cron: '56 * * * *'
+    - cron: '*/30 * * * *'
   workflow_dispatch:
 
 jobs:
