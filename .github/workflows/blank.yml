@@ -21,6 +21,6 @@ jobs:
       - name: Update repos
         run: |
           git remote add pyrsia https://github.com/ihcomega56/pyrsia.git
-          git fetch origin
+          git fetch pyrsia
           git merge pyrsia/main
           git push origin main
