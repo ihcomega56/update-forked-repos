@@ -16,8 +16,11 @@ jobs:
       - name: Check out repos
         uses: actions/checkout@master
         with:
-          repository: pyrsia/pyrsia
+          repository: ihcomega56/pyrsia
+          token: ${{secrets.gh_token}}
       - name: Update repos
         run: |
-          git remote -v
-          git branches
+          git remote add pyrsia https://github.com/ihcomega56/pyrsia.git
+          git fetch origin
+          git merge pyrsia/main
+          git push origin main
