@@ -1,0 +1,30 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Update forked repos
+
+# Controls when the workflow will run
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Pyrsia integration tests repo
+        uses: actions/checkout@master
+        with:
+          repository: ihcomega56/pyrsia-integration-tests
+          token: ${{secrets.gh_token}}
+      - name: Check the diff
+        run: |
+          git remote add integration-tests https://github.com/pyrsia/pyrsia-integration-tests.git
+          git fetch integration-tests
+          git diff --exit-code --quiet integration-tests/main
+      - name: Update repo
+        if: ${{ failure() }}
+        run: |
+          git merge integration-tests/main
+          git push origin main
