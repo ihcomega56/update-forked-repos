@@ -24,7 +24,7 @@ jobs:
           git fetch pyrsia
           git diff --exit-code --quiet pyrsia/main
       - name: Update repo
-        if: ${{ failure() }}
+#        if: ${{ failure() }}
         run: |
           git merge pyrsia/main
           git push origin main
