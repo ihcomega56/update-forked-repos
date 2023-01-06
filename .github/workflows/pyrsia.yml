@@ -18,13 +18,9 @@ jobs:
         with:
           repository: ihcomega56/pyrsia
           token: ${{secrets.gh_token}}
-      - name: Check the diff
+      - name: Update repo
         run: |
           git remote add pyrsia https://github.com/pyrsia/pyrsia.git
           git fetch pyrsia
-          git diff --exit-code --quiet pyrsia/main
-      - name: Update repo
-#        if: ${{ failure() }}
-        run: |
           git merge pyrsia/main
           git push origin main
